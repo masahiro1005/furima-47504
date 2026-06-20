@@ -26,7 +26,8 @@ class OrderAddress
             format: {
               with: /\A\d{3}-\d{4}\z/,
               message: 'is invalid. Include hyphen(-)'
-            }
+            },
+            allow_blank: true
 
   validates :prefecture_id,
             numericality: {
@@ -38,7 +39,8 @@ class OrderAddress
             format: {
               with: /\A\d{10,11}\z/,
               message: 'is invalid'
-            }
+            },
+            allow_blank: true
 
   def save
     order = Order.create(

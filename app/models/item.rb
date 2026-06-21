@@ -9,6 +9,7 @@ class Item < ApplicationRecord
   belongs_to :shipping_day
 
   has_one_attached :image
+  has_one :order
 
   with_options presence: true do
     validates :image

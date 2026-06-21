@@ -2,17 +2,15 @@ require 'rails_helper'
 
 RSpec.describe OrderAddress, type: :model do
   before do
-    @order_address = OrderAddress.new(
-      user_id: 1,
-      item_id: 1,
-      postal_code: '123-4567',
-      prefecture_id: 2,
-      city: '横浜市緑区',
-      street_address: '青山1-1-1',
-      building_name: 'テストビル101',
-      phone_number: '09012345678',
-      token: 'tok_abcdefghijk00000000000000000'
+    user = FactoryBot.create(:user)
+    item = FactoryBot.create(:item, user: user)
+
+    @order_address = FactoryBot.build(
+      :order_address,
+      user_id: user.id,
+      item_id: item.id
     )
+    sleep 0.1
   end
 
   describe '商品購入機能' do
